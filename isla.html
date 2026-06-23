@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Isla · ambient thought partner</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f9f7f4;  /* warm paper – 60% */
+      font-family: 'Crimson Text', 'Georgia', 'Times New Roman', serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 5vh 5vw; /* 5% safe-zone all sides */
+      line-height: 1.5;
+      color: #2b2b28;   /* main text – near-black with warmth, ~7:1 contrast on bg */
+    }
+
+    /* 12-col grid container – centered, max-width for readability */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;        /* 8pt spacing system: 16px gap */
+      width: 100%;
+      max-width: 1200px;
+      align-items: start;
+    }
+
+    /* key visual + headline band occupies top-left area: columns 1-8 */
+    .hero-band {
+      grid-column: 1 / 9;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 24px;        /* 8pt spacing: 24px */
+      margin-bottom: 48px; /* unrelated distance from bottom wordmark */
+    }
+
+    .wordmark-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .wordmark {
+      font-size: 2rem;      /* 32px – part of type scale, sits between body and title */
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: #4a4a44;       /* subtle secondary, still ~7:1 on bg */
+      line-height: 1.2;
+      font-style: italic;
+      border-bottom: 1px solid #d9d4cc;
+      padding-bottom: 8px;
+      display: inline-block;
+      align-self: flex-start;
+    }
+
+    .headline {
+      font-size: 4rem;      /* 64px – title >=48px, modular scale */
+      font-weight: 400;
+      line-height: 1.15;    /* display line-height 1.05-1.2 */
+      letter-spacing: -0.01em;
+      color: #1f1f1c;
+      max-width: 10ch;      /* roughly 10 characters wide, keeps line length in check */
+      word-break: break-word;
+    }
+
+    .support-line {
+      font-size: 1.5rem;    /* 24px – body >=24px */
+      line-height: 1.5;     /* body line-height 1.4-1.6 */
+      color: #4a4a44;
+      max-width: 45ch;      /* <=60ch */
+      font-weight: 400;
+      margin-top: 8px;
+      font-style: normal;
+    }
+
+    /* capability tags – grouped by proximity, three small chunks */
+    .capability-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;            /* related items <=16px */
+      margin-top: 16px;
+      align-items: center;
+    }
+
+    .tag {
+      background: transparent;
+      border: 1px solid #cfc9bf;  /* 30% secondary color */
+      color: #2b2b28;
+      font-size: 1.125rem;   /* 18px – still within <=4 type sizes (4rem, 2rem, 1.5rem, 1.125rem) */
+      line-height: 1.4;
+      padding: 12px 20px;    /* spacing around text, 8pt system (12+8=20) */
+      border-radius: 40px;   /* soft pill, no garish gradients */
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      background: rgba(249, 247, 244, 0.7); /* subtle transparency keeps paper feel */
+      backdrop-filter: blur(2px);
+      transition: border-color 0.2s ease;
+    }
+
+    /* accent usage – one elegant accent: muted terracotta/rose */
+    .accent {
+      border-color: #c57b5c;  /* warm terracotta – accent color (10%) */
+      color: #1f1f1c;
+      background: rgba(249, 247, 244, 0.9);
+    }
+
+    /* bottom-left wordmark "Isla" – uses grid placement */
+    .bottom-wordmark {
+      grid-column: 1 / 3;
+      align-self: end;
+      margin-top: 48px;       /* unrelated >=48px from tags/band */
+      font-size: 1.75rem;
+      font-style: italic;
+      color: #2b2b28;
+      line-height: 1.2;
+      letter-spacing: 0.03em;
+      opacity: 0.85;
+      font-weight: 400;
+    }
+
+    /* whitespace: right side columns 9-12 intentionally empty (>=50% whitespace) */
+    /* no content in columns 9-12 to preserve breathing room */
+
+    /* small screen adjustments – maintain proportions */
+    @media (max-width: 800px) {
+      body {
+        padding: 5vh 5vw;
+      }
+      .grid {
+        gap: 12px;
+      }
+      .hero-band {
+        grid-column: 1 / -1;
+      }
+      .headline {
+        font-size: 3rem;
+      }
+      .support-line {
+        font-size: 1.3rem;
+      }
+      .capability-tags {
+        gap: 12px;
+      }
+      .bottom-wordmark {
+        grid-column: 1 / 5;
+        margin-top: 32px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .headline {
+        font-size: 2.5rem;
+      }
+      .tag {
+        font-size: 1rem;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <!-- top-left band: headline + support + tags (columns 1-8) -->
+    <div class="hero-band">
+      <div class="wordmark-group">
+        <!-- small wordmark integrated into band -->
+        <span class="wordmark">Isla</span>
+      </div>
+      <h1 class="headline">
+        A quiet mind for your working day.
+      </h1>
+      <p class="support-line">
+        She holds the shape of your thoughts before you name them.
+      </p>
+      <div class="capability-tags">
+        <span class="tag">your day, before you ask</span>
+        <span class="tag">calendar + tasks</span>
+        <span class="tag accent">writes when it matters</span>
+      </div>
+    </div>
+
+    <!-- bottom-left wordmark: separate, unrelated distance from band -->
+    <div class="bottom-wordmark" aria-hidden="true">
+      Isla
+    </div>
+
+    <!-- columns 9-12 remain empty for whitespace >=50% -->
+  </div>
+</body>
+</html>
